@@ -2,6 +2,8 @@
   MQ-4 referance:
     - http://www.geekstips.com/mq4-sensor-natural-gas-methane-arduino/
     - https://jayconsystems.com/blog/understanding-a-gas-sensor
+  
+  Project repo: https://github.com/ShenTengTu/gas_sensor_lcd_nano
 */
 #include <avr/wdt.h>
 #include <SerialCommands.h> // https://github.com/ppedro74/Arduino-SerialCommands

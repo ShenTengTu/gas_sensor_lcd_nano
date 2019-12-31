@@ -16,9 +16,10 @@ class CLI(argparse.ArgumentParser):
         if self._sub_dest_name is None:
             sub_params['dest']  =  'sub_command'
             self._sub_dest_name =  sub_params['dest']
-        
+
         # handler mapping
         self._sub_parser_handler_map = {}
+        self._sub_parser_alias_map = {}
 
         super().__init__(**main_params)
 
@@ -37,10 +38,15 @@ class CLI(argparse.ArgumentParser):
         def deco(fn):
             fn_name = fn.__name__
             self._sub_parser_handler_map[fn_name] = fn
+            if 'aliases' in kwargs:
+                for alias in kwargs['aliases']:
+                    self._sub_parser_alias_map[alias] = fn_name
             self._sub_parsers_action.add_parser(fn_name, **kwargs)
+
+
             return fn
         return deco
-    
+
     def sub_command_arg(self, *arg_flags, **arg_conf):
         """
         Decorator.
@@ -51,7 +57,7 @@ class CLI(argparse.ArgumentParser):
             parser.add_argument(*arg_flags, **arg_conf)
             return fn
         return deco
-    
+
     def handle_args(self, args=None, namespace=None):
         """
         Parse args then pass to handler
@@ -60,6 +66,9 @@ class CLI(argparse.ArgumentParser):
         sub_parser_name = getattr(namespace, self._sub_dest_name, None)
         if sub_parser_name is not None:
             fn = self._sub_parser_handler_map.get(sub_parser_name)
+            if fn is None:
+                fn_name = self._sub_parser_alias_map.get(sub_parser_name)
+                fn = self._sub_parser_handler_map.get(fn_name)
             if callable(fn):
                 fn(namespace)
         return namespace

@@ -1,3 +1,6 @@
+'''
+Project repo: https://github.com/ShenTengTu/gas_sensor_lcd_nano
+'''
 from . import Arduino_Serial_CMD_TRX
 from .cli import CLI
 from argparse import Action

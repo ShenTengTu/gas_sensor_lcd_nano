@@ -1,3 +1,6 @@
+'''
+Project repo: https://github.com/ShenTengTu/gas_sensor_lcd_nano
+'''
 from typing import List, Callable
 from enum import Enum
 from serial.tools import list_ports, list_ports_common

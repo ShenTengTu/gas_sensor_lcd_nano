@@ -1,3 +1,6 @@
+'''
+Project repo: https://github.com/ShenTengTu/gas_sensor_lcd_nano
+'''
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
