@@ -1,0 +1,4 @@
+.vscode
+__pycache__
+*.png
+!MQ4_ch_0.png
