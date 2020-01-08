@@ -13,3 +13,6 @@ Interactive with MCU through serial port , commanding RTC to sync time with comp
 
 ## gas_sensor_lcd_nano
 Gas Sensing Device main program.
+
+## py_sensor_data_visualization
+Draw plots based on sensing data.
